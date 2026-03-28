@@ -18,7 +18,7 @@ const {
 
 const RPC_URL = import.meta.env.VITE_RPC_URL ?? "https://soroban-testnet.stellar.org";
 const NETWORK_PASS = import.meta.env.VITE_NETWORK_PASSPHRASE || "Test SDF Network ; September 2015";
-const CONTRACT_ID = import.meta.env.VITE_CONTRACT_ID ?? "";
+const CONTRACT_ID = import.meta.env.VITE_CONTRACT_ID || "CCSVKSIFPWVSO3NICR54BALEXQMOBJOA45IH2F2UADL2JAPKNAB5QN5C";
 
 const server = new rpc.Server(RPC_URL);
 const contract = CONTRACT_ID ? new Contract(CONTRACT_ID) : null;
