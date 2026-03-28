@@ -74,7 +74,7 @@ I have implemented a comprehensive test suite in `src/test.rs` covering 12 criti
 
 | Asset | Details |
 | :--- | :--- |
-| **GitHub Repository** | [Public repo link with contract source code] |
+| **GitHub Repository** | https://github.com/polsalarm/VeracityLink3.0.git |
 | **Contract ID** | `CCSVKSIFPWVSO3NICR54BALEXQMOBJOA45IH2F2UADL2JAPKNAB5QN5C` |
 | **Stellar Expert** | [View on Explorer](https://stellar.expert/explorer/testnet/contract/CCSVKSIFPWVSO3NICR54BALEXQMOBJOA45IH2F2UADL2JAPKNAB5QN5C) |
 
