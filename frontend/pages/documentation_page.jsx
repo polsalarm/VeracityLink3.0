@@ -389,21 +389,40 @@ const DocumentationPage = () => {
                                 Tech Stack
                             </h2>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div className="bg-white dark:bg-white/5 p-10 rounded-[2rem] border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all">
-                                <span className="material-symbols-outlined text-[#4b41e1] text-4xl mb-6">terminal</span>
-                                <h5 className="font-black font-headline text-xl text-[#00113a] dark:text-white mb-4">Rust Core</h5>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Memory-safe systems programming for the on-chain logic and credential anchoring.</p>
-                            </div>
-                            <div className="bg-white dark:bg-white/5 p-10 rounded-[2rem] border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all">
-                                <span className="material-symbols-outlined text-[#4b41e1] text-4xl mb-6">stars</span>
-                                <h5 className="font-black font-headline text-xl text-[#00113a] dark:text-white mb-4">Soroban</h5>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Next-gen smart contracts on Stellar, providing fast finality and low transaction costs.</p>
-                            </div>
-                            <div className="bg-white dark:bg-white/5 p-10 rounded-[2rem] border border-slate-200 dark:border-white/5 hover:shadow-xl transition-all">
-                                <span className="material-symbols-outlined text-[#4b41e1] text-4xl mb-6">javascript</span>
-                                <h5 className="font-black font-headline text-xl text-[#00113a] dark:text-white mb-4">Web SDK</h5>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Integrating Stellar SDK and Soroban-Client for seamless wallet interaction in React.</p>
+                        <div className="bg-white dark:bg-white/5 p-12 rounded-[2.5rem] border border-slate-200 dark:border-white/5 shadow-sm">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div className="space-y-8">
+                                    <div className="flex items-start gap-4">
+                                        <span className="material-symbols-outlined text-[#4b41e1] text-3xl">terminal</span>
+                                        <div>
+                                            <h5 className="font-black font-headline text-sm text-slate-400 uppercase tracking-widest mb-1">Smart Contracts</h5>
+                                            <p className="text-xl font-black text-[#00113a] dark:text-white font-headline">Soroban (Rust SDK)</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <span className="material-symbols-outlined text-[#4b41e1] text-3xl">token</span>
+                                        <div>
+                                            <h5 className="font-black font-headline text-sm text-slate-400 uppercase tracking-widest mb-1">Frontend</h5>
+                                            <p className="text-xl font-black text-[#00113a] dark:text-white font-headline">React + Vite (Tailwind CSS)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="space-y-8">
+                                    <div className="flex items-start gap-4">
+                                        <span className="material-symbols-outlined text-[#4b41e1] text-3xl">account_balance_wallet</span>
+                                        <div>
+                                            <h5 className="font-black font-headline text-sm text-slate-400 uppercase tracking-widest mb-1">Wallet</h5>
+                                            <p className="text-xl font-black text-[#00113a] dark:text-white font-headline">Freighter (Stellar)</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <span className="material-symbols-outlined text-[#4b41e1] text-3xl">hub</span>
+                                        <div>
+                                            <h5 className="font-black font-headline text-sm text-slate-400 uppercase tracking-widest mb-1">Network</h5>
+                                            <p className="text-xl font-black text-[#00113a] dark:text-white font-headline">Stellar Testnet</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
