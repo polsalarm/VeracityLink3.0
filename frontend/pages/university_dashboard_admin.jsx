@@ -384,11 +384,6 @@ const UniversityAdminDashboard = () => {
 
                         {/* Issue form */}
                         <div className="lg:col-span-12 xl:col-span-5 bg-white p-8 rounded-[2.5rem] shadow-xl border border-outline-variant/10">
-                            <div className="flex gap-8 mb-6">
-                                <a className="font-inter text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-opacity duration-300 underline underline-offset-4" href="#">Network Status</a>
-                                <Link className="font-inter text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-opacity duration-300 underline underline-offset-4" to="/docs">Documentation</Link>
-                                <a className="font-inter text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-opacity duration-300 underline underline-offset-4" href="#">Privacy Policy</a>
-                            </div>
                             <div className="flex items-center gap-3 mb-8">
                                 <span className="material-symbols-outlined text-primary">assignment_add</span>
                                 <h3 className="font-headline font-bold text-xl text-primary">Issue New Credential</h3>
