@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeracityLink | Digital Atheneum</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    </style>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#191c1e",
+              "on-tertiary-container": "#00a291",
+              "primary-container": "#002366",
+              "primary-fixed-dim": "#b3c5ff",
+              "surface-container": "#e2e4e6",
+              "surface": "#f7f9fb",
+              "on-error-container": "#93000a",
+              "background": "#f7f9fb",
+              "on-primary-fixed": "#00174a",
+              "on-primary-container": "#758dd5",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f7f9fb",
+              "inverse-primary": "#b3c5ff",
+              "inverse-surface": "#2d3133",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#c5c6d2",
+              "surface-tint": "#435b9f",
+              "on-tertiary-fixed": "#00201c",
+              "tertiary-fixed": "#62fae3",
+              "on-primary": "#ffffff",
+              "surface-variant": "#d1d4d7",
+              "tertiary-fixed-dim": "#3cddc7",
+              "primary-fixed": "#dbe1ff",
+              "surface-dim": "#d8dadc",
+              "tertiary": "#001815",
+              "secondary-fixed": "#e2dfff",
+              "surface-container-low": "#e8eaed",
+              "tertiary-container": "#002f29",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#3323cc",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#0f0069",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-fixed-variant": "#005047",
+              "on-surface-variant": "#2d2e33",
+              "primary": "#00113a",
+              "secondary": "#4b41e1",
+              "on-primary-fixed-variant": "#2a4386",
+              "on-tertiary-fixed": "#00201c",
+              "outline": "#5a5c66",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#c3c0ff",
+              "secondary-container": "#645efb",
+              "surface-container-highest": "#d8dadc",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#fffbff",
+              "on-surface": "#121415",
+              "surface-container-high": "#dee0e3"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/main.jsx"></script>
+  </body>
+</html>
