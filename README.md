@@ -4,16 +4,6 @@
 ![Static Badge](https://img.shields.io/badge/Frontend-React_Vite-61DAFB?style=for-the-badge&logo=react)
 ![Static Badge](https://img.shields.io/badge/Network-Testnet-green?style=for-the-badge)
 
-## 🎨 Tech Stack
-- **Smart Contracts**: Soroban (Rust SDK)
-- **Frontend**: React + Vite (Tailwind CSS)
-- **Wallet**: Freighter (Stellar)
-- **Network**: Stellar Testnet
-
----
-
-> [!IMPORTANT]
-> **Privacy Note**: VeracityLink follows a non-custodial privacy model. Off-chain document metadata (names, GPAs, etc.) should be stored in a secure JSON format, with only the resulting file hash being anchored to the blockchain.
 
 ---
 
@@ -251,6 +241,14 @@ The Command Center allowing universities to monitor the registered student grid 
 
 ---
 
+## 🎨 Tech Stack
+- **Smart Contracts**: Soroban (Rust SDK)
+- **Frontend**: React + Vite (Tailwind CSS)
+- **Wallet**: Freighter (Stellar)
+- **Network**: Stellar Testnet
+
+---
+
 ## 👥 Target Users
 - **Universities / Educational Institutions**: To securely issue degrees via cryptographic hashing with zero ongoing server costs.
 - **Students / Alumni**: To establish ownership of an immutable, globally accessible timeline of academic progression.
@@ -276,6 +274,11 @@ The Command Center allowing universities to monitor the registered student grid 
 - **Immutability**: Degrees absolutely cannot be forged or overwritten once hashed onto the ledger.
 - **Frictionless SDK Tools**: Access to the `@stellar/freighter-api` simplified our ability to provide non-crypto-native students with straightforward interactions via browser extension.
 - **Predictable Costs**: Micro-validation and mass issuance remain accessible due to Stellar's nearly non-existent network transaction fees.
+
+---
+
+> [!IMPORTANT]
+> **Privacy Note**: VeracityLink follows a non-custodial privacy model. Off-chain document metadata (names, GPAs, etc.) should be stored in a secure JSON format, with only the resulting file hash being anchored to the blockchain.
 
 ---
 
