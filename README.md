@@ -225,6 +225,8 @@ stellar contract deploy \
 
 ---
 
+## 🎬 Live Walkthrough
+
 ### 🛡️ Identity & Onboarding
 Every student and administrator's journey begins with secure connection pooling via the **Freighter Wallet**. Strict timeout protections handle unresponsive extensions seamlessly in deployed Vercel domains.
 | 1. Connect Wallet | 2. On-Chain Auth |
