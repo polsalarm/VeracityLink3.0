@@ -233,6 +233,10 @@ Every student and administrator's journey begins with secure connection pooling 
 | :---: | :---: |
 | ![Connect Modal](./images/LandingPage.png) | ![Freighter Appove](./images/ConnectWallet.png) |
 
+### 🎓 Student Profile Dossier
+A personal command center where graduates can securely view their historically issued credentials and cryptographically verified degrees directly from the ledger.
+![Student Profile](./images/StudentProfile.png)
+
 ### 🌐 The Verification Engine
 A rapid validation grid allowing anyone to confirm degrees natively using the Soroban ledger RPC endpoints.
 ![Verification Search](./images/Verification.png)
