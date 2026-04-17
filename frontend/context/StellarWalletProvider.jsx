@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import * as StellarSdk from "@stellar/stellar-sdk";
-import { isConnected, requestAccess, getAddress, signTransaction } from '@stellar/freighter-api';
+import { isConnected, requestAccess, getAddress, signTransaction, isAllowed, setAllowed } from '@stellar/freighter-api';
 import { WalletContext } from './StellarWalletContext.js';
 
 const {
@@ -75,45 +75,81 @@ export const StellarWalletProvider = ({ children }) => {
     const connect = useCallback(async () => {
         setIsConnecting(true);
         setError(null);
-        
-        // Helper to prevent infinite hangs from the Freighter API
-        const withTimeout = (promise, ms, timeoutLabel) => {
-            let timeoutId;
-            const timeoutPromise = new Promise((_, reject) => {
-                timeoutId = setTimeout(() => reject(new Error(timeoutLabel)), ms);
-            });
-            return Promise.race([promise, timeoutPromise]).finally(() => clearTimeout(timeoutId));
-        };
 
         try {
-            // 1. Check if Freighter is injected (fast timeout)
-            const connected = await withTimeout(isConnected(), 3000, "Freighter is not responding")
-                .catch(() => false); // If timeout or error, assume not connected
-                
+            // ── Step 1: Check if Freighter extension exists ──────────────
+            console.log("[Wallet] Step 1: Checking if Freighter is installed...");
+            let connected = false;
+            try {
+                const connResult = await isConnected();
+                // isConnected may return a boolean or { isConnected: bool }
+                connected = connResult === true || connResult?.isConnected === true;
+            } catch { connected = false; }
+
             if (!connected) {
-                setError("Freighter not found or not responding. Redirecting...");
+                setError("Freighter wallet not found. Install it to continue.");
                 setTimeout(() => window.open("https://www.freighter.app/", "_blank"), 1500);
                 return;
             }
-            
-            // 2. Request Access (long timeout for user to interact with the popup)
-            const result = await withTimeout(requestAccess(), 120000, "Freighter request timed out. Please open the extension and unlock it.");
-            let address = extractAddress(result);
-            
-            // 3. Fallback Get Address (medium timeout)
-            if (!address) {
-                const data = await withTimeout(getAddress(), 5000, "Timeout getting address");
-                address = extractAddress(data);
+            console.log("[Wallet] Freighter detected ✓");
+
+            // ── Step 2: Check & request allow-list permission ────────────
+            // THIS is the critical fix. On localhost, Freighter auto-allows.
+            // On deployed domains (Vercel, etc.), the site must be explicitly
+            // added to Freighter's allow list via setAllowed(). Without this,
+            // requestAccess() hangs indefinitely.
+            console.log("[Wallet] Step 2: Checking allow-list status...");
+            let allowed = false;
+            try {
+                const allowedResult = await isAllowed();
+                allowed = allowedResult === true || allowedResult?.isAllowed === true;
+            } catch { allowed = false; }
+
+            if (!allowed) {
+                console.log("[Wallet] Site not on allow list — requesting permission...");
+                try {
+                    const setAllowedResult = await setAllowed();
+                    allowed = setAllowedResult === true || setAllowedResult?.isAllowed === true;
+                } catch (e) {
+                    console.warn("[Wallet] setAllowed() failed:", e);
+                }
+
+                if (!allowed) {
+                    throw new Error("Freighter denied access. Please allow this site in your Freighter extension settings.");
+                }
             }
-            
+            console.log("[Wallet] Site is allowed ✓");
+
+            // ── Step 3: Get the wallet address ───────────────────────────
+            console.log("[Wallet] Step 3: Requesting wallet address...");
+            let address = null;
+
+            // Try requestAccess first (triggers Freighter popup if needed)
+            try {
+                const result = await requestAccess();
+                address = extractAddress(result);
+            } catch (e) {
+                console.warn("[Wallet] requestAccess() failed, trying getAddress():", e);
+            }
+
+            // Fallback: directly ask for the address
+            if (!address) {
+                try {
+                    const data = await getAddress();
+                    address = extractAddress(data);
+                } catch (e) {
+                    console.warn("[Wallet] getAddress() also failed:", e);
+                }
+            }
+
             if (address) {
                 setWalletAddress(address);
-                console.log("Wallet connected:", address);
+                console.log("[Wallet] Connected:", address, "✓");
             } else {
-                throw new Error("Could not retrieve wallet address. Please ensure Freighter is set up.");
+                throw new Error("Could not retrieve wallet address. Please unlock Freighter and try again.");
             }
         } catch (err) {
-            console.error("Wallet connection error:", err);
+            console.error("[Wallet] Connection error:", err);
             setError(err.message || "Failed to connect wallet.");
         } finally {
             setIsConnecting(false);
