@@ -76,15 +76,34 @@ export const StellarWalletProvider = ({ children }) => {
         setIsConnecting(true);
         setError(null);
         try {
-            if (!(await isConnected())) {
-                setError("Freighter extension not found.");
+            const connected = await isConnected();
+            if (!connected) {
+                setError("Freighter not found. Opening download page...");
+                // Small delay so the user can read the toast before being moved
+                setTimeout(() => window.open("https://www.freighter.app/", "_blank"), 1500);
                 return;
             }
+            
+            // Request access from the extension
             const result = await requestAccess();
-            const address = extractAddress(result);
-            if (address) setWalletAddress(address);
+            let address = extractAddress(result);
+            
+            // Fallback: Some versions of Freighter API return empty on requestAccess
+            // requiring an explicit getAddress() call afterward
+            if (!address) {
+                const data = await getAddress();
+                address = extractAddress(data);
+            }
+            
+            if (address) {
+                setWalletAddress(address);
+                console.log("Wallet connected:", address);
+            } else {
+                throw new Error("Could not retrieve wallet address. Please check Freighter.");
+            }
         } catch (err) {
-            setError(err.message || "Failed to connect wallet");
+            console.error("Wallet connection error:", err);
+            setError(err.message || "Failed to connect wallet.");
         } finally {
             setIsConnecting(false);
         }

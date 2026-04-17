@@ -1,5 +1,5 @@
 [package]
-name = "veracity_link"
+name = "veracity_link_3.0"
 version = "0.1.0"
 edition = "2021"
 description = "A DAO community treasury with token-weighted governance, spending proposals, veto period before execution, and on-chain fund release on Soroban"
