@@ -75,23 +75,34 @@ export const StellarWalletProvider = ({ children }) => {
     const connect = useCallback(async () => {
         setIsConnecting(true);
         setError(null);
+        
+        // Helper to prevent infinite hangs from the Freighter API
+        const withTimeout = (promise, ms, timeoutLabel) => {
+            let timeoutId;
+            const timeoutPromise = new Promise((_, reject) => {
+                timeoutId = setTimeout(() => reject(new Error(timeoutLabel)), ms);
+            });
+            return Promise.race([promise, timeoutPromise]).finally(() => clearTimeout(timeoutId));
+        };
+
         try {
-            const connected = await isConnected();
+            // 1. Check if Freighter is injected (fast timeout)
+            const connected = await withTimeout(isConnected(), 3000, "Freighter is not responding")
+                .catch(() => false); // If timeout or error, assume not connected
+                
             if (!connected) {
-                setError("Freighter not found. Opening download page...");
-                // Small delay so the user can read the toast before being moved
+                setError("Freighter not found or not responding. Redirecting...");
                 setTimeout(() => window.open("https://www.freighter.app/", "_blank"), 1500);
                 return;
             }
             
-            // Request access from the extension
-            const result = await requestAccess();
+            // 2. Request Access (long timeout for user to interact with the popup)
+            const result = await withTimeout(requestAccess(), 120000, "Freighter request timed out. Please open the extension and unlock it.");
             let address = extractAddress(result);
             
-            // Fallback: Some versions of Freighter API return empty on requestAccess
-            // requiring an explicit getAddress() call afterward
+            // 3. Fallback Get Address (medium timeout)
             if (!address) {
-                const data = await getAddress();
+                const data = await withTimeout(getAddress(), 5000, "Timeout getting address");
                 address = extractAddress(data);
             }
             
@@ -99,7 +110,7 @@ export const StellarWalletProvider = ({ children }) => {
                 setWalletAddress(address);
                 console.log("Wallet connected:", address);
             } else {
-                throw new Error("Could not retrieve wallet address. Please check Freighter.");
+                throw new Error("Could not retrieve wallet address. Please ensure Freighter is set up.");
             }
         } catch (err) {
             console.error("Wallet connection error:", err);
