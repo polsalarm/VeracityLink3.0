@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import LandingPage from './frontend/pages/landing_page'
-import StudentProfile from './frontend/pages/student_profile'
-import UniversityAdminDashboard from './frontend/pages/university_dashboard_admin'
-import AdminLogin from './frontend/pages/admin_login'
-import VerificationPortal from './frontend/pages/verification_portal'
+import LandingPage from './pages/landing_page'
+import StudentProfile from './pages/student_profile'
+import UniversityAdminDashboard from './pages/university_dashboard_admin'
+import AdminLogin from './pages/admin_login'
+import VerificationPortal from './pages/verification_portal'
 
-import RegistrationPage from './frontend/pages/registration_page'
-import RegistrationGate from './frontend/components/RegistrationGate'
-import DocumentationPage from './frontend/pages/documentation_page'
+import RegistrationPage from './pages/registration_page'
+import RegistrationGate from './components/RegistrationGate'
+import DocumentationPage from './pages/documentation_page'
 
-import { StellarWalletProvider } from './frontend/context/StellarWalletProvider'
+import { StellarWalletProvider } from './context/StellarWalletProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

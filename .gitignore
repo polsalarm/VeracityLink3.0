@@ -1,8 +1,8 @@
 # Rust / Soroban
-/target/
+contract/target/
 .soroban/
 soroban-identity/
-Cargo.lock
+contract/Cargo.lock
 
 # Node / Frontend
 node_modules/
@@ -33,4 +33,4 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Testing (optional: comment out if you want to track snapshots)
-# test_snapshots/
+# contract/test_snapshots/
