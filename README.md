@@ -1,3 +1,5 @@
+# VeracityLink | The Ledger of Academic Truth
+
 > **The Decentralized Academic Registry.** Trustless credential issuance, on-chain verified diplomas, and instant global verification on the Soroban blockchain.
 
 ![Static Badge](https://img.shields.io/badge/Blockchain-Stellar_Soroban-black?style=for-the-badge&logo=stellar)
