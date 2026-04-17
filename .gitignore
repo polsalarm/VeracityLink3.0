@@ -34,3 +34,5 @@ pnpm-debug.log*
 
 # Testing (optional: comment out if you want to track snapshots)
 # contract/test_snapshots/
+
+presentation_transcript.md
