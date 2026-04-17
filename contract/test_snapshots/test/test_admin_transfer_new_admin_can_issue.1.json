@@ -159,6 +159,18 @@
                         "val": {
                           "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHK3M"
                         }
+                      },
+                      {
+                        "key": {
+                          "vec": [
+                            {
+                              "symbol": "Students"
+                            }
+                          ]
+                        },
+                        "val": {
+                          "vec": []
+                        }
                       }
                     ]
                   }

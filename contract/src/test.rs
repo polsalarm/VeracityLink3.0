@@ -7,7 +7,7 @@ use soroban_sdk::{testutils::Address as _, Address, BytesN, Env};
 fn setup() -> (Env, VeracityLinkClient<'static>, Address) {
     let env = Env::default();
     env.mock_all_auths();
-    let contract_id = env.register_contract(None, VeracityLink);
+    let contract_id = env.register(VeracityLink, ());
     let client = VeracityLinkClient::new(&env, &contract_id);
     let admin = Address::generate(&env);
     client.initialize(&admin);

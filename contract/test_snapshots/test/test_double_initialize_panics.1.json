@@ -52,6 +52,18 @@
                         "val": {
                           "address": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFCT4"
                         }
+                      },
+                      {
+                        "key": {
+                          "vec": [
+                            {
+                              "symbol": "Students"
+                            }
+                          ]
+                        },
+                        "val": {
+                          "vec": []
+                        }
                       }
                     ]
                   }
