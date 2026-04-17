@@ -25,7 +25,7 @@ const RegistrationGate = ({ children }) => {
             setIsLoading(true);
             try {
                 // 1. Check if Admin (Always force a fresh check for security)
-                const adminAddr = await getAdmin(); 
+                const adminAddr = await getAdmin();
                 if (adminAddr === walletAddress) {
                     setIsAdmin(true);
                     setIsRegistered(true);
@@ -59,7 +59,7 @@ const RegistrationGate = ({ children }) => {
         // Bypass landing page only if NOT connected OR registered/admin
         const isBypassPage = isLoginPage || isVerifyPage || isAdminPage;
         const landingBypass = isLandingPage && (!walletAddress || isRegistered === true || isAdmin);
-        
+
         if (isBypassPage || landingBypass) return;
 
         // 1. Admin Logic: Admins don't register as students
