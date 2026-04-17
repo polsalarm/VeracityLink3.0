@@ -229,11 +229,11 @@ stellar contract deploy \
 Every student and administrator's journey begins with secure connection pooling via the **Freighter Wallet**. Strict timeout protections handle unresponsive extensions seamlessly in deployed Vercel domains.
 | 1. Connect Wallet | 2. On-Chain Auth |
 | :---: | :---: |
-| ![Connect Modal](./images/ConnectWallet.png) | ![Freighter Appove](./images/FreighterApprove.png) |
+| ![Connect Modal](./images/LandingPage.png) | ![Freighter Appove](./images/ConnectWallet.png) |
 
 ### 🌐 The Verification Engine
 A rapid validation grid allowing anyone to confirm degrees natively using the Soroban ledger RPC endpoints.
-![Verification Search](./images/VerificationEngine.png)
+![Verification Search](./images/Verification.png)
 
 ### 🏫 Administrative Operations
 The Command Center allowing universities to monitor the registered student grid and cryptographically issue new diplomas matching paper graduation records.
